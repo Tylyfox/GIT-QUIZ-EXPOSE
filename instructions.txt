@@ -1,0 +1,19 @@
+1) créer index.html / style.css / script.js
+2) faire index.html contenant une card centrale, avec en haut la question, 4 boutons réponses et 2 boutons valider et suivant, 1 bouton demarrer quizz
+3) faire le css avec les class et les changements de couleurs des boutons pour la sélection
+4) JAVASCRIPT
+	- Créer un objet const questionnaire contenant question, rep1, rep2, rep3, rep4, et reponse[true ou false] pour déterminer quel reponse et vrai ou fausse
+		exemple si rep1 est la bonne réponse sur les 4, reponse: [true, false, false, false];
+	- Fonction qui lance le jeu quand on clique sur le bouton démarrer
+	- Fonction qui affiche la question (condition si il n'y a plus de questions afficher fin du questionnaire)
+	- Fonction qui change la couleur du bouton lorsqu'il est selcetionné par l'utilisateur
+	
+	- Fonction qui affiche le bouton Suivant et la réponse après après cliquer sur le bouton valider 
+	(changement des couleurs du bouton en utilisant les classe wrong et correct)
+	- fonction qui réinitialise la couleur des boutons lors de l'affichage de la nouvelle question
+	- déclaration des variables et constantes. Utiliser une variable i d'incrementation
+	-Déclaration des évenements onclick et appelle des fonctions.
+
+Attention, les fonctions seront faites de manières traditionnelles et non fléchées. Lors de l'appel d'une fonction apres un évenement onclick 
+ne pas mettre de parentheses sinon elles se lancent des l'initialisation de a page index.html. (TRUC de base en javascript qu'on ne nous a jamais dit.....)
+	exemple : bontonValider.onclick = afficheBoutonSuivant; et non afficheBoutonSuivant().
