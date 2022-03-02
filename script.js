@@ -9,6 +9,7 @@ const questionnaire = [
       "un cheval de Troie qui permet de surveiller le travail des développeurs",
       "un système de contrôle de version open source",
     ],
+    resultat : [false, true, false, true],
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const questionnaire = [
       "git remote add origin ",
       "git init ",
     ],
+    resultat : [false, false, true, false],
   },
   {
     id: 3,
@@ -30,6 +32,7 @@ const questionnaire = [
       "un autre dépôt distant créé par un collaborateur",
       "la ramification latérale d'un tronc d'arbre",
     ],
+    resultat : [true, true, false, false],
   },
   {
     id: 4,
@@ -40,6 +43,7 @@ const questionnaire = [
       "c'est une requête envoyée au propriétaire du projet ",
       "il permet de travailler librement sur ce projet sans affecter l’original",
     ],
+    resultat : [false, true, false, true],
   },
 ];
 
@@ -91,18 +95,41 @@ else{
 
 };
 
-//fonction qui affiche le bouton suivant et la réponse après validation
+//fonction qui affiche le bouton suivant et la réponse après validation 
+// ET afficher les bonnes et mauvaises réponses
 
 function affichageReponse() {
   validBouton.classList.add("hide");
   nextBouton.classList.remove("hide");
+  questionnaire[iteration].resultat[0] ? reponse1.classList.add("correct") : reponse1.classList.add("wrong");
+  questionnaire[iteration].resultat[1] ? reponse2.classList.add("correct") : reponse2.classList.add("wrong");
+  questionnaire[iteration].resultat[2] ? reponse3.classList.add("correct") : reponse3.classList.add("wrong");
+  questionnaire[iteration].resultat[3] ? reponse4.classList.add("correct") : reponse4.classList.add("wrong");
 }
+
 
 //fontion qui change la couleur du bouton lorsque l'on le sélectionne
 
+function caseSelect(){
+  if (this.classList.contains("select")  ) {
+    this.classList.replace("select", "btn");
+  }
+  else{
+    this.classList.add("btn", "select")
+  }
+}
+
 //fonction qui reinitailise les couleurs des boutons
+function reinitailiseBtnSelect(){
+  
+}
+
 
 //évènements
 startBouton.onclick = startQuizz;
 validBouton.onclick = affichageReponse;
 nextBouton.onclick = startQuizz;
+reponse1.onclick = caseSelect;
+reponse2.onclick = caseSelect;
+reponse3.onclick = caseSelect;
+reponse4.onclick = caseSelect;
