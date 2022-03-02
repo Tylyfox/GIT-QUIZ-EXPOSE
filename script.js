@@ -44,11 +44,20 @@ const questionnaire = [
 ];
 
 //définition des variables et constantes
+let iteration = -1;
+let startBouton = document.getElementById("start-btn");
+let apparitionQuestion = document.getElementById("question-container");
 
 //fonctions
 
 //fonction qui lance le jeu quand on clique sur le bonton Commencer le quizz
+function startQuizz () {
+    startBouton.classList.add('hide');
+    apparitionQuestion.classList.remove('hide');
+    iteration++;
 
+    affichageQuestion(iteration);
+};
 //fonction qui affiche la question de l'objet
 
 //fonction qui affiche le bouton suivant et la réponse après validation
@@ -58,3 +67,4 @@ const questionnaire = [
 //fonction qui reinitailise les couleurs des boutons
 
 //évènements
+startBouton.onclick = startQuizz;
