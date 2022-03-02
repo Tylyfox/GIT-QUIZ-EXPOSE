@@ -72,7 +72,8 @@ function startQuizz() {
 
 //fonction qui affiche la question de l'objet
 function affichageQuestion(i) {
- 
+  reinitailiseBtnSelect();
+  // condition pour faire défiler les 4 questions et puis remercier (car taille du questionnaire dépassé)
   if (i !== questionnaire.length ) {
   //affichage du bouton valider
   validBouton.classList.remove("hide");
@@ -93,6 +94,7 @@ else{
    reponse4.classList.add("hide");
  }
 
+
 };
 
 //fonction qui affiche le bouton suivant et la réponse après validation 
@@ -101,14 +103,32 @@ else{
 function affichageReponse() {
   validBouton.classList.add("hide");
   nextBouton.classList.remove("hide");
+// condition pour remplacer le bouton gris par le bouton vert ou rouge
+  if (reponse1.classList.contains("select")) {
+    reponse1.classList.replace("select", "btn");
+  }
+  if (reponse2.classList.contains("select")) {
+    reponse2.classList.replace("select", "btn")
+  }
+  if (reponse3.classList.contains("select")) {
+    reponse3.classList.replace("select", "btn")
+  }
+  if (reponse4.classList.contains("select")) {
+    reponse4.classList.replace("select", "btn")
+  }
+
+  // condition ternaire pour l'élément résultat du tableau questionnaire ? 
+  //si vrai alors reponse1 prend la class "correct"
+  // si faux alors reponse1 prend class "wrong"
   questionnaire[iteration].resultat[0] ? reponse1.classList.add("correct") : reponse1.classList.add("wrong");
   questionnaire[iteration].resultat[1] ? reponse2.classList.add("correct") : reponse2.classList.add("wrong");
   questionnaire[iteration].resultat[2] ? reponse3.classList.add("correct") : reponse3.classList.add("wrong");
   questionnaire[iteration].resultat[3] ? reponse4.classList.add("correct") : reponse4.classList.add("wrong");
+
 }
 
 
-//fontion qui change la couleur du bouton lorsque l'on le sélectionne
+//fonction qui change la couleur du bouton lorsqu'on le sélectionne
 
 function caseSelect(){
   if (this.classList.contains("select")  ) {
@@ -121,7 +141,10 @@ function caseSelect(){
 
 //fonction qui reinitailise les couleurs des boutons
 function reinitailiseBtnSelect(){
-  
+  reponse1.classList.contains("correct") ? reponse1.classList.replace("correct","btn") : reponse1.classList.replace("wrong","btn");
+  reponse2.classList.contains("correct") ? reponse2.classList.replace("correct","btn") : reponse2.classList.replace("wrong","btn");
+  reponse3.classList.contains("correct") ? reponse3.classList.replace("correct","btn") : reponse3.classList.replace("wrong","btn");
+  reponse4.classList.contains("correct") ? reponse4.classList.replace("correct","btn") : reponse4.classList.replace("wrong","btn");
 }
 
 
