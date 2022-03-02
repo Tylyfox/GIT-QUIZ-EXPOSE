@@ -58,7 +58,8 @@ let nextBouton = document.getElementById("next-btn");
 
 //fonction qui lance le jeu quand on clique sur le bonton Commencer le quizz
 function startQuizz() {
-  startBouton.classList.add("hide");
+  startBouton.classList.add("hide"); 
+  nextBouton.classList.add("hide");
   apparitionQuestion.classList.remove("hide");
   iteration++;
 
@@ -66,19 +67,29 @@ function startQuizz() {
 }
 
 //fonction qui affiche la question de l'objet
-function affichageQuestion() {
-  //affichage des questions
-  question.innerHTML = questionnaire[0].question;
-
-  //affichages des 4 boutons réponses
-  reponse1.innerHTML = questionnaire[0].reponse[0];
-  reponse2.innerHTML = questionnaire[0].reponse[1];
-  reponse3.innerHTML = questionnaire[0].reponse[2];
-  reponse4.innerHTML = questionnaire[0].reponse[3];
-
+function affichageQuestion(i) {
+ 
+  if (i !== questionnaire.length ) {
   //affichage du bouton valider
   validBouton.classList.remove("hide");
-}
+  //affichage des questions
+  question.innerHTML = questionnaire[i].question;
+  //affichages des 4 boutons réponses
+  reponse1.innerHTML = questionnaire[i].reponse[0];
+  reponse2.innerHTML = questionnaire[i].reponse[1];
+  reponse3.innerHTML = questionnaire[i].reponse[2];
+  reponse4.innerHTML = questionnaire[i].reponse[3];
+ }
+else{ 
+   question.innerHTML = "Merci d'avoir répondu au questionnaire"; 
+   startBouton.classList.add("hide");
+   reponse1.classList.add("hide");
+   reponse2.classList.add("hide");
+   reponse3.classList.add("hide");
+   reponse4.classList.add("hide");
+ }
+
+};
 
 //fonction qui affiche le bouton suivant et la réponse après validation
 
@@ -94,3 +105,4 @@ function affichageReponse() {
 //évènements
 startBouton.onclick = startQuizz;
 validBouton.onclick = affichageReponse;
+nextBouton.onclick = startQuizz;
