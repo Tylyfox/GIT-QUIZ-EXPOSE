@@ -47,18 +47,38 @@ const questionnaire = [
 let iteration = -1;
 let startBouton = document.getElementById("start-btn");
 let apparitionQuestion = document.getElementById("question-container");
+let question = document.getElementById("question");
+let reponse1 = document.getElementById("btn1");
+let reponse2 = document.getElementById("btn2");
+let reponse3 = document.getElementById("btn3");
+let reponse4 = document.getElementById("btn4");
+let validBouton = document.getElementById("valid-btn");
 
 //fonctions
 
 //fonction qui lance le jeu quand on clique sur le bonton Commencer le quizz
-function startQuizz () {
-    startBouton.classList.add('hide');
-    apparitionQuestion.classList.remove('hide');
-    iteration++;
+function startQuizz() {
+  startBouton.classList.add("hide");
+  apparitionQuestion.classList.remove("hide");
+  iteration++;
 
-    affichageQuestion(iteration);
-};
+  affichageQuestion(iteration);
+}
+
 //fonction qui affiche la question de l'objet
+function affichageQuestion() {
+  //affichage des questions
+  question.innerHTML = questionnaire[0].question;
+
+  //affichages des 4 boutons réponses
+  reponse1.innerHTML = questionnaire[0].reponse[0];
+  reponse2.innerHTML = questionnaire[0].reponse[1];
+  reponse3.innerHTML = questionnaire[0].reponse[2];
+  reponse4.innerHTML = questionnaire[0].reponse[3];
+
+  //affichage du bouton valider
+  validBouton.classList.remove("hide");
+}
 
 //fonction qui affiche le bouton suivant et la réponse après validation
 
