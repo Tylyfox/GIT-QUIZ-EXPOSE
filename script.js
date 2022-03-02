@@ -58,6 +58,7 @@ let reponse3 = document.getElementById("btn3");
 let reponse4 = document.getElementById("btn4");
 let validBouton = document.getElementById("valid-btn");
 let nextBouton = document.getElementById("next-btn");
+let finQuestion= document.getElementById("finQuestionnaire");
 //fonctions
 
 //fonction qui lance le jeu quand on clique sur le bonton Commencer le quizz
@@ -86,12 +87,14 @@ function affichageQuestion(i) {
   reponse4.innerHTML = questionnaire[i].reponse[3];
  }
 else{ 
-   question.innerHTML = "Merci d'avoir répondu au questionnaire"; 
+  finQuestion.classList.remove("hide");
+   question.classList.add("hide");
    startBouton.classList.add("hide");
    reponse1.classList.add("hide");
    reponse2.classList.add("hide");
    reponse3.classList.add("hide");
    reponse4.classList.add("hide");
+
  }
 
 
@@ -156,3 +159,33 @@ reponse1.onclick = caseSelect;
 reponse2.onclick = caseSelect;
 reponse3.onclick = caseSelect;
 reponse4.onclick = caseSelect;
+
+
+//ANIMATION FINALES
+var textWrapper = document.querySelector('.ml1 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml1 .letter',
+    scale: [0.3,1],
+    opacity: [0,1],
+    translateZ: 0,
+    easing: "easeOutExpo",
+    duration: 600,
+    delay: (el, i) => 70 * (i+1)
+  }).add({
+    targets: '.ml1 .line',
+    scaleX: [0,1],
+    opacity: [0.5,1],
+    easing: "easeOutExpo",
+    duration: 700,
+    offset: '-=875',
+    delay: (el, i, l) => 80 * (l - i)
+  }).add({
+    targets: '.ml1',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
