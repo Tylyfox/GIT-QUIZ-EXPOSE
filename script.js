@@ -53,7 +53,7 @@ let reponse2 = document.getElementById("btn2");
 let reponse3 = document.getElementById("btn3");
 let reponse4 = document.getElementById("btn4");
 let validBouton = document.getElementById("valid-btn");
-
+let nextBouton = document.getElementById("next-btn");
 //fonctions
 
 //fonction qui lance le jeu quand on clique sur le bonton Commencer le quizz
@@ -82,9 +82,15 @@ function affichageQuestion() {
 
 //fonction qui affiche le bouton suivant et la réponse après validation
 
+function affichageReponse() {
+  validBouton.classList.add("hide");
+  nextBouton.classList.remove("hide");
+}
+
 //fontion qui change la couleur du bouton lorsque l'on le sélectionne
 
 //fonction qui reinitailise les couleurs des boutons
 
 //évènements
 startBouton.onclick = startQuizz;
+validBouton.onclick = affichageReponse;
